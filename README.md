@@ -20,7 +20,7 @@ Feel free to fork (but change the YouTube API key).
 2. draggable, non-scrolling in-page popup (default)
 3. freely resizable popup window (doesn't close when you leave the page)
 
-Also:
+# Also:
 * Support for Vimeo, LiveLeak, Dailymotion, vidme, WorldStarHipHop, Vine, Coub and Streamable
 * Titles are cached to reduce traffic and delay on subsequent visits.
 * To change settings: Monkey toolbar icon → "User Script Commands" → "Set up YouTube Link Title..."
