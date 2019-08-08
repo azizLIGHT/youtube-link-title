@@ -25,3 +25,6 @@ Also:
 * Titles are cached to reduce traffic and delay on subsequent visits.
 * To change settings: Monkey toolbar icon → "User Script Commands" → "Set up YouTube Link Title..."
 
+![Preview](preview.png)
+![Player](player.png)
+![Settings](settings.png)
