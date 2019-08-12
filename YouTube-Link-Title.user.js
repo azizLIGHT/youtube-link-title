@@ -2,7 +2,7 @@
 // @name           YouTube Link Title
 // @description    Adds video titles, shows previews and embeds on click. Also supported: Vimeo, LiveLeak, Dailymotion, vidme, WorldStarHipHop, Vine, Coub, Streamable
 // @namespace      http://w9p.co/userscripts/
-// @version        2017.2.28
+// @version        2019.8.12
 // @author         kuehlschrank
 // @homepage       http://w9p.co/userscripts/ytlt
 // @icon           https://w9p.co/userscripts/ytlt/icon.png
