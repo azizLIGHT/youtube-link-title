@@ -213,9 +213,10 @@ var links = {
 				if((vi = cache.get(li.sid, li.vid)) || cfg.urls_only && !li.url) {
 					links.decorate(a, li, vi);
 				} else {
-					(function(a, li) {
-						net.info(li, function(vi) { links.decorate(a, li, vi); });
-					})(a, li);
+//					(function(a, li) {
+//						net.info(li, function(vi) { links.decorate(a, li, vi); });
+					links.decorate(a, li, vi);
+//					})(a, li);
 				}
 				if(++num == 15) return window.setTimeout(processChunk, 100);
 			}
