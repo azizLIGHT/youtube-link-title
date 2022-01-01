@@ -617,6 +617,28 @@ var popup = {
 };
 
 var sites = {
+	'iv':{
+		patterns:["invidious.osi.kr", "youtube.com", "youtu.be", "youtube.googleapis.com"],
+		parse:function(url) { return /^https?:\/\/((invidious\.osi\.kr|(www\.|m\.)?youtu(\.be|be\.(googleapis\.)?com)).+v[=\/]|#p\/[a-z]\/.+\/|youtu\.be\/)([a-z0-9_-]{8,})(.*[#&\?]t=([0-9hms]+))?/i.exec(url) ? {vid:RegExp.$6, t:RegExp.$8} : null; },
+		sizes:[[640,360],[853,480]],
+		embed:function(vid, t) { var m = /((\d+)h)?((\d+)m)?(\d+)?/.exec(t); t = parseInt(m[2] || 0)*3600 + parseInt(m[4] || 0)*60 + parseInt(m[5] || 0); return 'https://invidious.osi.kr/embed/' + vid + '?autoplay=1&rel=1' + (t ? '&start=' + t : ''); },
+		url:function(vid, t, oUrl) { return 'https://invidious.osi.kr/watch?v=' + vid + (/\b(list=[a-z0-9_-]+)/i.exec(oUrl) ? '&' + RegExp.$1 : '') + (t ? '#t=' + t : ''); },
+		preview:function(vid) { return 'https://invidious.osi.kr/vi/' + vid + '/0.jpg'; },
+		icon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACXklEQVQ4jXVTy27TUBC9dFUoP8DjR0AgeZVdl5Uq9QV8QB8LhGCdRBSE6nZRuYntbqOsG9KkjVQpwqrKow8rjS1ECiGxQ7HjudcSbcPisMElScNIs7kz58yZozuM9cX09PSdRCLxSNd1PZvNlrLZbEnTtPVEIvFkYmLibn//ZUiSNJxMJmc2Nzc/2rZ90Wq14Ps+fN9Hq9WCbdsXxWLx0+Li4uOxsbHrPeBYLDaiKMqrSqVyRkTgnIMTIeQEToTojYhwfHx8lkql3kiSdDPCX5Nl+ZllWR0hBOgv4GdAeFsnNPx/JEQEIQRs2/69srLygjE2xGZnZ+8bhtGIJkT5o01IfSbUvF6CSM3u7q6zsLDwkK2traWbzSb6CYgI78plNBqNKzXOORzHgaqq62xjY+NLEARXwKenp5BlGcViEd2rdWcul/vGdnZ2zgdNqNVqKJVKkGUZrusOVFEulzsDCYgIpmnCcRzouo6tra0rKi4JBq3geR4ODg5ARDg6OsLS0tJAFblc7itTFCXVbSLnHPV6HdVqFZxzBEEATdOwvb19qSIyMZ1O62x+fv6eYRjfu9n39/dxcnICzjmEEDg8POzxgnMOwzCac3NzD6KP9LRarXaEEAiCAKZpoltVu93G3t4eHMeBEAKWZXWWl5efM8aGGGOMjY6O3lhdXX1pmuavIAgQhmHPvpxzhGEIIkKlUjlTFOV1LBYbGXRMU/l8/r1t2+eu68LzPHieB9d1YVnWRaFQ+JBMJmckSRr+71VOTk7eisfjU6qqpjOZTCGTyRQ0TVPj8fjM+Pj47f7+P9wg4L7yKYnpAAAAAElFTkSuQmCC',
+		request:function(vid, f) {
+			net.json('https://invidious.osi.kr/api/v1/videos/' + vid + '?fields=' + ['title'].join(','), function(code, obj, txt) {
+				if (code != 200) {
+					return window.setTimeout(f, 0);
+				} else {
+					if (obj.hasOwnProperty('title')) {
+						window.setTimeout(f, 0, {title:obj.title});
+					} else {
+						window.setTImeout(f, 0, {title:"Video not found", status:4})
+					}
+				}
+			});
+		}
+	},
 	'yt':{
 		patterns:["youtube.com", "youtu.be", "youtube.googleapis.com"],
 		parse:function(url) { return /^https?:\/\/((www\.|m\.)?youtu(\.be|be\.(googleapis\.)?com).+v[=\/]|#p\/[a-z]\/.+\/|youtu\.be\/)([a-z0-9_-]{8,})(.*[#&\?]t=([0-9hms]+))?/i.exec(url) ? {vid:RegExp.$5, t:RegExp.$7} : null; },
