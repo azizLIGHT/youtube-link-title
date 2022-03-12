@@ -618,7 +618,7 @@ var popup = {
 
 var sites = {
 	'iv':{
-		patterns:["invidious.osi.kr", "youtube.com", "youtu.be", "youtube.googleapis.com"],
+		patterns:["invidious.osi.kr"],
 		parse:function(url) { return /^https?:\/\/((invidious\.osi\.kr|(www\.|m\.)?youtu(\.be|be\.(googleapis\.)?com)).+v[=\/]|#p\/[a-z]\/.+\/|youtu\.be\/)([a-z0-9_-]{8,})(.*[#&\?]t=([0-9hms]+))?/i.exec(url) ? {vid:RegExp.$6, t:RegExp.$8} : null; },
 		sizes:[[640,360],[853,480]],
 		embed:function(vid, t) { var m = /((\d+)h)?((\d+)m)?(\d+)?/.exec(t); t = parseInt(m[2] || 0)*3600 + parseInt(m[4] || 0)*60 + parseInt(m[5] || 0); return 'https://invidious.osi.kr/embed/' + vid + '?autoplay=1&rel=1' + (t ? '&start=' + t : ''); },
