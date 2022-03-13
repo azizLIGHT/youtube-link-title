@@ -27,6 +27,7 @@ Feel free to fork (but change the YouTube API key).
 
 # Also:
 * Support for Invidious (just invidious.osi.kr instance for now), Vimeo, LiveLeak, Dailymotion, vidme, WorldStarHipHop, Vine, Coub and Streamable
+* Supports [rComments for reddit](https://chrome.google.com/webstore/detail/rcomments-reddit-hover-co/njkilkdmdolbjonbfjhmknefhdccioig) for every comment load.
 * Titles are cached to reduce traffic and delay on subsequent visits.
 * To change settings: Monkey toolbar icon → "User Script Commands" → "Set up YouTube Link Title..."
 
@@ -50,3 +51,9 @@ Feel free to fork (but change the YouTube API key).
 ![CSP Error:](https://user-images.githubusercontent.com/8013867/158039359-763ffd20-39bd-44a0-a0b7-1097935227be.png)
 * Content Security Policy can be carefully overidden to allow very specific embeds on chosen websites
 * Use an extension like [Content Security Policy Override](https://chrome.google.com/webstore/detail/content-security-policy-o/lhieoncdgamiiogcllfmboilhgoknmpi) very cautiously and at your own risk.
+
+# Todo
+* Invidious: specify your own instances: single or multiple
+* Invidious: option to redirect youtube to chosen invidious instance
+* Invidious: edge cases with inv.domain/videoID (not inv.domain/watch?v=videoID)
+* More sites: Tiktok?
