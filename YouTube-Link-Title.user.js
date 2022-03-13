@@ -2,7 +2,7 @@
 // @name           YouTube Link Title
 // @description    Adds video titles, shows previews and embeds on click. Also supported: Vimeo, LiveLeak, Dailymotion, vidme, WorldStarHipHop, Vine, Coub, Streamable
 // @namespace      https://github.com/azizLIGHT/youtube-link-title
-// @version        2022.03.12
+// @version        2022.03.12b
 // @author         kuehlschrank
 // @homepage       https://github.com/azizLIGHT/youtube-link-title
 // @icon           https://www.youtube.com/img/favicon_32.png
@@ -213,10 +213,10 @@ var links = {
 				if((vi = cache.get(li.sid, li.vid)) || cfg.urls_only && !li.url) {
 					links.decorate(a, li, vi);
 				} else {
-//					(function(a, li) {
-//						net.info(li, function(vi) { links.decorate(a, li, vi); });
+					(function(a, li) {
+						net.info(li, function(vi) { links.decorate(a, li, vi); });
 					links.decorate(a, li, vi);
-//					})(a, li);
+					})(a, li);
 				}
 				if(++num == 15) return window.setTimeout(processChunk, 100);
 			}
@@ -654,7 +654,7 @@ var sites = {
 				part.push('contentDetails');
 				fields.push('contentDetails/regionRestriction');
 			}
-			net.json('https://www.googleapis.com/youtube/v3/videos?id=' + vid + '&part=' + part.join(',') + '&fields=items(' + fields.join(',') + ')&' + String.fromCharCode.apply(String, [107,101,121,61,65,73,122,97,83,121,68,87,120,79,114,52,76,105,52,65,54,72,116,89,120,57,107,55,98,86,98,67,81,54,56,118,112,119,74,74,117,111,99]), function(code, obj, txt) {
+			net.json('https://www.googleapis.com/youtube/v3/videos?id=' + vid + '&part=' + part.join(',') + '&fields=items(' + fields.join(',') + ')&' + String.fromCharCode.apply(String, [107,101,121,61,65,73,122,97,83,121,68,74,107,66,66,56,86,87,111,102,117,76,57,48,104,75,66,108,51,45,76,66,97,116,100,49,74,111,71,76,66,71,89]), function(code, obj, txt) {
 				if(code != 200) return window.setTimeout(f, 0);
 				var item = obj.items[0];
 				if(!item) {
