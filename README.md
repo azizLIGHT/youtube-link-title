@@ -57,3 +57,4 @@ Feel free to fork (but change the YouTube API key).
 * Invidious: option to redirect youtube to chosen invidious instance
 * Invidious: edge cases with inv.domain/videoID (not inv.domain/watch?v=videoID)
 * More sites: Tiktok?
+* Combine with [YouTube Peek Preview](https://greasyfork.org/en/scripts/370755-youtube-peek-preview). Make thumbnail preview and titling better
